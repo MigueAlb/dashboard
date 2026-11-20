@@ -1,5 +1,6 @@
 
 import './App.css'
+import { useState } from 'react';
 import { Grid } from '@mui/material';
 import HeaderUI from './components/HeaderUI';
 import AlertUI from './components/AlertUI';
@@ -14,7 +15,9 @@ import Alert from '@mui/material/Alert';
 
 function App() {
 
-  const { data, loading, error } = useFetchData();
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+
+  const { data, loading, error } = useFetchData(selectedOption);
 
   return (
     <Grid container spacing={5} sx={{ justifyContent: 'center', alignItems: 'center' }}>
@@ -34,7 +37,7 @@ function App() {
 
       {/* Selector */}
       <Grid size={{ xs: 12, md: 3 }}>
-        <SelectorUI />
+        <SelectorUI onOptionSelect={setSelectedOption} />
       </Grid>
 
       {/* Indicadores */}
