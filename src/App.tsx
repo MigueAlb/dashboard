@@ -55,26 +55,26 @@ function App() {
         </Grid>
 
         <Grid size={{ xs: 12, md: 3 }}>
-          {dataFetcherOutput &&
+          {data &&
             (<IndicatorUI
               title='Temperatura aparente'
-              description={`${dataFetcherOutput.current.apparent_temperature} ${dataFetcherOutput.current_units.apparent_temperature}`} />)
+              description={`${data.current.apparent_temperature} ${data.current_units.apparent_temperature}`} />)
           }
         </Grid>
 
         <Grid size={{ xs: 12, md: 3 }}>
-          {dataFetcherOutput &&
+          {data &&
             (<IndicatorUI
               title='Velocidad del viento'
-              description={`${dataFetcherOutput.current.wind_speed_10m} ${dataFetcherOutput.current_units.wind_speed_10m}`} />)
+              description={`${data.current.wind_speed_10m} ${data.current_units.wind_speed_10m}`} />)
           }
         </Grid>
 
         <Grid size={{ xs: 12, md: 3 }}>
-          {dataFetcherOutput &&
+          {data &&
             (<IndicatorUI
               title='Humedad relativa'
-              description={`${dataFetcherOutput.current.relative_humidity_2m} ${dataFetcherOutput.current_units.relative_humidity_2m}`} />)
+              description={`${data.current.relative_humidity_2m} ${data.current_units.relative_humidity_2m}`} />)
           }
         </Grid>
 
@@ -82,26 +82,26 @@ function App() {
 
       {/* Gráfico */}
       <Grid size={{ xs: 12, md: 6 }} sx={{ display: { xs: 'none', md: 'block' } }}>
-        {dataFetcherOutput && (
+        {data && (
           <ChartUI
             title='Temperatura y viento por hora'
-            labels={dataFetcherOutput.hourly.time.map((tiempo) => tiempo.slice(11))}
-            values1={dataFetcherOutput.hourly.temperature_2m}
-            values2={dataFetcherOutput.hourly.wind_speed_10m}
-            label1={`Temperatura (${dataFetcherOutput.hourly_units.temperature_2m})`}
-            label2={`Viento (${dataFetcherOutput.hourly_units.wind_speed_10m})`} />
+            labels={data.hourly.time.map((tiempo) => tiempo.slice(11))}
+            values1={data.hourly.temperature_2m}
+            values2={data.hourly.wind_speed_10m}
+            label1={`Temperatura (${data.hourly_units.temperature_2m})`}
+            label2={`Viento (${data.hourly_units.wind_speed_10m})`} />
         )}
       </Grid>
 
       {/* Tabla */}
       <Grid size={{ xs: 12, md: 6 }} sx={{ display: { xs: 'none', md: 'block' } }}>
-        {dataFetcherOutput && (
+        {data && (
           <TableUI
-            labels={dataFetcherOutput.hourly.time.map((tiempo) => tiempo.slice(11))}
-            values1={dataFetcherOutput.hourly.temperature_2m}
-            values2={dataFetcherOutput.hourly.wind_speed_10m}
-            header1={`Temperatura (${dataFetcherOutput.hourly_units.temperature_2m})`}
-            header2={`Viento (${dataFetcherOutput.hourly_units.wind_speed_10m})`} />
+            labels={data.hourly.time.map((tiempo) => tiempo.slice(11))}
+            values1={data.hourly.temperature_2m}
+            values2={data.hourly.wind_speed_10m}
+            header1={`Temperatura (${data.hourly_units.temperature_2m})`}
+            header2={`Viento (${data.hourly_units.wind_speed_10m})`} />
         )}
       </Grid>
 
